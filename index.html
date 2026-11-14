@@ -209,6 +209,7 @@
   .row dd { margin: 0; overflow-wrap: anywhere; line-height: 1.8; }
   .acct { font-size: 22px; font-weight: 700; letter-spacing: .02em; font-variant-numeric: tabular-nums; color: var(--sea-deep); line-height: 1.5; }
   .nw { white-space: nowrap; }
+  .alt-or { font-size: 15px; font-weight: 400; color: var(--ink-soft); letter-spacing: 0; margin: 0 4px; }
   .way { display: flex; flex-direction: column; background: #FFFDF9; border: 1.5px solid var(--line); border-radius: 18px; padding: 20px 22px 22px; }
   .way h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; margin: 0 0 14px; padding-bottom: 12px; border-bottom: 2px solid var(--sun-soft); color: var(--sea-deep); }
   .num { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--sea-deep); color: #fff; font-family: var(--body); font-size: 16px; font-weight: 700; flex: none; }
@@ -315,7 +316,7 @@
         <div class="way">
           <h3><span class="num">1</span>劃線支票</h3>
           <dl class="rows">
-            <div class="row"><dt>抬頭</dt><dd>「優瓦薈有限公司」或「<span class="nw">YOU WA HUI LIMITED</span>」</dd></div>
+            <div class="row"><dt>抬頭</dt><dd class="acct">優瓦薈有限公司 <span class="alt-or">或</span> <span class="nw">YOU WA HUI LIMITED</span></dd></div>
             <div class="row"><dt>郵寄地址</dt><dd>香港新界上水石湖墟郵局郵政信箱266號優瓦薈會計部收</dd></div>
           </dl>
           <span class="designate">註明奉獻給：美麗之島（Joyce）</span>
@@ -324,7 +325,7 @@
           <h3><span class="num">2</span>銀行過數或存款</h3>
           <dl class="rows">
             <div class="row"><dt>中信(國際)銀行戶口</dt><dd class="acct">018-716-2-08038-3-00</dd></div>
-            <div class="row"><dt>戶口名稱</dt><dd>YOU WA HUI LIMITED</dd></div>
+            <div class="row"><dt>戶口名稱</dt><dd class="acct">YOU WA HUI LIMITED</dd></div>
           </dl>
           <div class="either" role="group" aria-label="入數紙寄回方式，二擇一">
             <div class="either-h"><span>入數紙</span><em>二擇一</em></div>
