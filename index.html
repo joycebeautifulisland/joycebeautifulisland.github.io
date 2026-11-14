@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美麗之島｜Joyce 的服事</title>
+<meta name="description" content="美麗之島｜Joyce 的服事：在台灣接待與牧養香港人。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: sunrise-over-the-sea hero, a real timeline for the three dates, one warm donation card. Single committed look. */
+  :root {
+    --sand: #FFF7EC;
+    --paper: #FFFFFF;
+    --sea-deep: #12424F;
+    --sea: #2A7F86;
+    --foam: #DCEFEA;
+    --sun: #F4A259;
+    --sun-soft: #FFE0B5;
+    --ink: #23333A;
+    --ink-soft: #52646B;
+    --line: #EAD9C0;
+    --display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    --body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--sand);
+    color: var(--ink);
+    overflow-x: clip;
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.95;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  a { color: var(--sea-deep); }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 28px;
+    align-items: center;
+    padding-block: 40px 28px;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.3;
+    margin: 0 0 18px;
+    color: var(--sea-deep);
+    text-wrap: balance;
+  }
+  .hero .meta { margin: 0; color: var(--ink-soft); font-size: 16px; }
+  .hero .meta strong { color: var(--sea-deep); }
+  .photo { margin: 0; position: relative; min-width: 0; }
+  .photo::before { content: ""; position: absolute; inset: 14px -12px -14px 14px; background: var(--sun-soft); border-radius: 26px; }
+  .photo img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 72% 62%; border-radius: 22px; box-shadow: 0 18px 40px -22px rgba(18,66,79,.55); }
+  .wave { display: block; width: 100%; height: 46px; margin: 8px 0 0; }
+
+  /* Sections */
+  section { padding-block: 34px; }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(24px, 4vw, 30px);
+    color: var(--sea-deep);
+    margin: 0 0 18px;
+  }
+  p { margin: 0 0 16px; }
+
+  /* Timeline: the dates are real, so they carry the structure */
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 4px; }
+  .timeline li {
+    position: relative;
+    padding: 0 0 26px 34px;
+    border-left: 2px solid var(--line);
+    margin-left: 10px;
+  }
+  .timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: -9px; top: 10px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--sun);
+    box-shadow: 0 0 0 5px var(--sand);
+  }
+  .when {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .08em;
+    color: var(--sea);
+    margin-bottom: 4px;
+  }
+  .timeline p { margin: 0; }
+
+  /* Postcard */
+  .postcard {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 26px;
+    align-items: center;
+    background: var(--foam);
+    border-radius: 22px;
+    padding: 28px;
+  }
+  .postcard h2 { margin-bottom: 14px; }
+  .btn {
+    display: inline-block;
+    background: var(--sea-deep);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 26px;
+    border-radius: 999px;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .btn:hover { background: var(--sea); transform: translateY(-1px); }
+  .btn.alt { background: var(--paper); color: var(--sea-deep); box-shadow: inset 0 0 0 2px var(--sea-deep); }
+  .btn.alt:hover { background: var(--sea-deep); color: #fff; }
+  .card-art { width: 150px; min-width: 0; }
+  .card-art svg { display: block; width: 100%; height: auto; transform: rotate(5deg); filter: drop-shadow(0 10px 14px rgba(18,66,79,.25)); }
+
+  /* Giving */
+  .give {
+    background: var(--paper);
+    border-radius: 22px;
+    border: 2px solid var(--sun-soft);
+    padding: 30px 30px 26px;
+  }
+  .receipt {
+    display: inline-block;
+    background: var(--sun-soft);
+    color: var(--sea-deep);
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .ways > div { min-width: 0; }
+  .ways h3 {
+    font-family: var(--display);
+    font-size: 19px;
+    margin: 0 0 10px;
+    color: var(--sea);
+  }
+  .ways ul { margin: 0; padding-left: 20px; }
+  .ways li { margin-bottom: 8px; overflow-wrap: anywhere; }
+  .ways li.note { list-style: none; margin-left: -20px; margin-top: 6px; }
+  .designate {
+    display: inline-block;
+    background: #FFF3DF;
+    color: var(--sea-deep);
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1.5px var(--sun);
+  }
+  .ref { margin: 22px 0 0; font-size: 15px; color: var(--ink-soft); overflow-wrap: anywhere; }
+
+  /* Emphasis + sign-off */
+  .emph {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--sea-deep);
+    background: linear-gradient(transparent 56%, var(--sun-soft) 56%);
+    padding: 0 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .thanks {
+    font-family: var(--display);
+    font-size: clamp(26px, 5vw, 38px);
+    line-height: 1.5;
+    text-align: center;
+    color: var(--sea-deep);
+    margin: 30px 0 0;
+    padding-block: 26px 6px;
+    text-wrap: balance;
+  }
+  .thanks::before {
+    content: "";
+    display: block;
+    width: 64px; height: 4px;
+    border-radius: 4px;
+    background: var(--sun);
+    margin: 0 auto 20px;
+  }
+
+  /* Contact */
+  .contact-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  footer { padding-block: 26px 48px; color: var(--ink-soft); font-size: 14px; border-top: 1px solid var(--line); margin-top: 30px; }
+
+  @media (max-width: 700px) {
+    body { font-size: 16px; line-height: 1.9; }
+    .hero { grid-template-columns: 1fr; padding-block: 26px 14px; }
+    .photo { order: -1; }
+    .photo::before { inset: 10px -8px -10px 10px; }
+    .postcard { grid-template-columns: 1fr; padding: 22px; }
+    .card-art { width: 120px; justify-self: start; order: -1; }
+    .give { padding: 22px 20px 20px; }
+    .ways { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div>
+      <h1>美麗之島｜Joyce 的服事</h1>
+      <p class="meta">2016 年被呼召，從香港移居到<strong>美麗之島</strong>。<br>接待與牧養香港人。</p>
+    </div>
+    <figure class="photo">
+      <img src="joyce.jpg" alt="Joyce 舉著相機拍照" width="1000" height="1000">
+    </figure>
+  </header>
+  <svg class="wave" viewBox="0 0 800 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 24 C60 6 120 6 180 24 C240 42 300 42 360 24 C420 6 480 6 540 24 C600 42 660 42 720 24 C760 12 780 10 800 14" fill="none" stroke="#2A7F86" stroke-width="4" stroke-linecap="round"/>
+    <path d="M0 36 C60 20 120 20 180 36 C240 50 300 50 360 36 C420 20 480 20 540 36 C600 50 660 50 720 36 C760 26 780 24 800 28" fill="none" stroke="#F4A259" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+  </svg>
+
+  <section aria-labelledby="serve">
+    <h2 id="serve">Joyce 的服侍</h2>
+    <ol class="timeline">
+      <li>
+        <span class="when">2016</span>
+        <p>我在2016年被呼召，從香港移居到美麗之島。三年後才明白，原來神在預備我，在此接待香港人。我在南部以自由傳道的身分，關心香港人；之後在中部教會牧養香港人。</p>
+      </li>
+      <li>
+        <span class="when">2025.3</span>
+        <p>2025年3月，我正式加入服侍貧窮人及邊緣群體的群體服侍，主要職責是接待短宣隊和製作媒體（短宣隊大部分也來自香港）。由於這群體缺乏政府資助，所以資源上相對缺乏。我在加入前，就已經和負責人討論有關自籌薪金的事，不想自己的薪酬，再加重了這裡的負擔。</p>
+      </li>
+      <li>
+        <span class="when">2026.10</span>
+        <p>2026年10月，香港差會優瓦薈正式接納我成為他們的宣教士。自此，除了我的服侍將會有更多人與我同行及守望外，也意味著大家的奉獻，將會收到可以在香港扣稅的收據。所以想在此邀請大家，<strong class="emph">如果你有感動，請將它化為行動！</strong></p>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="card">
+    <div class="postcard">
+      <div>
+        <h2 id="card">索取宣教記念明信片</h2>
+        <a class="btn" href="https://forms.gle/4FFYAVzrCTEdxHLJ6" target="_blank" rel="noopener">索取宣教記念明信片</a>
+      </div>
+      <div class="card-art" aria-hidden="true">
+        <svg viewBox="0 0 220 150">
+          <rect x="4" y="4" width="212" height="142" rx="10" fill="#FFFDF8" stroke="#12424F" stroke-width="3"/>
+          <rect x="16" y="16" width="92" height="118" rx="6" fill="#FFE0B5"/>
+          <circle cx="76" cy="50" r="15" fill="#F4A259"/>
+          <path d="M16 96 C40 84 60 104 84 94 C96 90 102 94 108 92 L108 134 L16 134 Z" fill="#2A7F86"/>
+          <path d="M16 112 C36 104 62 120 108 108 L108 134 L16 134 Z" fill="#12424F"/>
+          <line x1="124" y1="48" x2="196" y2="48" stroke="#BFD3CE" stroke-width="3" stroke-linecap="round"/>
+          <line x1="124" y1="70" x2="196" y2="70" stroke="#BFD3CE" stroke-width="3" stroke-linecap="round"/>
+          <line x1="124" y1="92" x2="178" y2="92" stroke="#BFD3CE" stroke-width="3" stroke-linecap="round"/>
+          <rect x="170" y="16" width="30" height="24" rx="3" fill="none" stroke="#F4A259" stroke-width="3" stroke-dasharray="4 3"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="giving">
+    <div class="give">
+      <h2 id="giving">奉獻方式</h2>
+      <p class="receipt">捐款港幣 100 元或以上可獲香港免稅收據。</p>
+      <div class="ways">
+        <div>
+          <h3>1. 劃線支票</h3>
+          <ul>
+            <li>抬頭：「優瓦薈有限公司」或「YOU WA HUI LIMITED」</li>
+            <li>郵寄地址：香港新界上水石湖墟郵局郵政信箱266號優瓦薈會計部收</li>
+            <li class="note"><span class="designate">註明奉獻給：美麗之島（Joyce）</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>2. 銀行過數或存款</h3>
+          <ul>
+            <li>中信(國際)銀行戶口：018-716-2-08038-3-00</li>
+            <li>戶口名稱：YOU WA HUI LIMITED</li>
+            <li>把入數紙電郵至 youwahui@gmail.com</li>
+            <li>或郵寄至：香港新界上水石湖墟郵局郵政信箱266號</li>
+            <li>優瓦薈會計部收</li>
+            <li class="note"><span class="designate">註明奉獻給：美麗之島（Joyce）</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="ref">參考網址：<a href="https://youwahui.org.hk/offering" target="_blank" rel="noopener">https://youwahui.org.hk/offering</a></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="contact">
+    <h2 id="contact">聯絡方式</h2>
+    <div class="contact-row">
+      <a class="btn alt" href="https://m.me/pastorsinceretalk" target="_blank" rel="noopener">Facebook 私訊</a>
+      <a class="btn alt" href="https://ig.me/m/pastorsinceretalk" target="_blank" rel="noopener">Instagram 私訊</a>
+    </div>
+  </section>
+
+  <p class="thanks">謝謝您與我同行！</p>
+
+  <footer>美麗之島｜Joyce 的服事</footer>
+</main>
+</body>
+</html>
