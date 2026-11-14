@@ -201,6 +201,21 @@
     margin: 0 auto 20px;
   }
 
+  /* Giving details: label/value rows and an either-or group */
+  .rows { margin: 0 0 16px; }
+  .row { display: grid; grid-template-columns: 8.4em 1fr; gap: 2px 14px; padding: 10px 0; border-bottom: 1px dashed var(--line); align-items: baseline; }
+  .row:first-child { padding-top: 0; }
+  .row dt { font-size: 14px; font-weight: 700; color: var(--sea); line-height: 1.7; }
+  .row dd { margin: 0; overflow-wrap: anywhere; }
+  .acct { font-weight: 700; letter-spacing: .02em; font-variant-numeric: tabular-nums; color: var(--sea-deep); }
+  .either { margin: 6px 0 18px; border: 1.5px dashed var(--sun); border-radius: 16px; padding: 14px; background: #FFFAF1; display: grid; gap: 10px; }
+  .opt { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; }
+  .opt p { margin: 0; line-height: 1.8; overflow-wrap: anywhere; }
+  .opt svg { width: 24px; height: 24px; margin-top: 3px; color: var(--sea); }
+  .or { display: flex; align-items: center; gap: 10px; }
+  .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+  .or span { background: var(--sun-soft); color: var(--sea-deep); font-size: 13px; font-weight: 700; border-radius: 999px; padding: 0 14px; line-height: 1.8; }
+
   /* Contact */
   .contact-row { display: flex; flex-wrap: wrap; gap: 14px; }
 
@@ -216,6 +231,7 @@
     .card-art { width: 120px; justify-self: start; order: -1; }
     .give { padding: 22px 20px 20px; }
     .ways { grid-template-columns: 1fr; gap: 20px; }
+    .row { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
@@ -225,7 +241,7 @@
   <header class="hero">
     <div>
       <h1>美麗之島｜Joyce 的服事</h1>
-      <p class="meta">2016 年被呼召，從香港移居到<strong>美麗之島</strong>。<br>接待與牧養香港人。</p>
+      <p class="meta">2016 年被呼召，從香港移居到<strong>美麗之島</strong>。<br>2019 年在南部以自由傳道的身分關心香港人，<br>2022 年在中部教會牧養香港人。</p>
     </div>
     <figure class="photo">
       <img src="joyce.jpg" alt="Joyce 舉著相機拍照" width="1000" height="1000">
@@ -291,22 +307,30 @@
       <div class="ways">
         <div>
           <h3>1. 劃線支票</h3>
-          <ul>
-            <li>抬頭：「優瓦薈有限公司」或「YOU WA HUI LIMITED」</li>
-            <li>郵寄地址：香港新界上水石湖墟郵局郵政信箱266號優瓦薈會計部收</li>
-            <li class="note"><span class="designate">註明奉獻給：美麗之島（Joyce）</span></li>
-          </ul>
+          <dl class="rows">
+            <div class="row"><dt>抬頭</dt><dd>「優瓦薈有限公司」或「YOU WA HUI LIMITED」</dd></div>
+            <div class="row"><dt>郵寄地址</dt><dd>香港新界上水石湖墟郵局郵政信箱266號優瓦薈會計部收</dd></div>
+          </dl>
+          <span class="designate">註明奉獻給：美麗之島（Joyce）</span>
         </div>
         <div>
           <h3>2. 銀行過數或存款</h3>
-          <ul>
-            <li>中信(國際)銀行戶口：018-716-2-08038-3-00</li>
-            <li>戶口名稱：YOU WA HUI LIMITED</li>
-            <li>把入數紙電郵至 youwahui@gmail.com</li>
-            <li>或郵寄至：香港新界上水石湖墟郵局郵政信箱266號</li>
-            <li>優瓦薈會計部收</li>
-            <li class="note"><span class="designate">註明奉獻給：美麗之島（Joyce）</span></li>
-          </ul>
+          <dl class="rows">
+            <div class="row"><dt>中信(國際)銀行戶口</dt><dd class="acct">018-716-2-08038-3-00</dd></div>
+            <div class="row"><dt>戶口名稱</dt><dd>YOU WA HUI LIMITED</dd></div>
+          </dl>
+          <div class="either" role="group" aria-label="入數紙寄回方式，二擇一">
+            <div class="opt">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+              <p>把入數紙電郵至 <a href="mailto:youwahui@gmail.com">youwahui@gmail.com</a></p>
+            </div>
+            <div class="or" aria-hidden="true"><span>或</span></div>
+            <div class="opt">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v10H4z"/><path d="M8 20v-7h8v7"/><path d="M9 8.5h6"/></svg>
+              <p>郵寄至：香港新界上水石湖墟郵局郵政信箱266號<br>優瓦薈會計部收</p>
+            </div>
+          </div>
+          <span class="designate">註明奉獻給：美麗之島（Joyce）</span>
         </div>
       </div>
       <p class="ref">參考網址：<a href="https://youwahui.org.hk/offering" target="_blank" rel="noopener">https://youwahui.org.hk/offering</a></p>
