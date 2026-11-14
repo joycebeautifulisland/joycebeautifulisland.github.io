@@ -209,7 +209,8 @@
   @media (max-width: 700px) {
     body { font-size: 16px; line-height: 1.9; }
     .hero { grid-template-columns: 1fr; padding-block: 26px 14px; }
-    .photo { order: -1; }
+    .photo { width: min(78%, 300px); margin: 6px auto 8px; }
+    .photo img { aspect-ratio: 1 / 1; }
     .photo::before { inset: 10px -8px -10px 10px; }
     .postcard { grid-template-columns: 1fr; padding: 22px; }
     .card-art { width: 120px; justify-self: start; order: -1; }
