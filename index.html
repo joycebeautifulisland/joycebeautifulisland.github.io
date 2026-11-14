@@ -150,7 +150,7 @@
     font-size: 16px;
     line-height: 1.6;
   }
-  .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
   .ways > div { min-width: 0; }
   .ways h3 {
     font-family: var(--display);
@@ -203,11 +203,18 @@
 
   /* Giving details: label/value rows and an either-or group */
   .rows { margin: 0 0 16px; }
-  .row { display: grid; grid-template-columns: 8.4em 1fr; gap: 2px 14px; padding: 10px 0; border-bottom: 1px dashed var(--line); align-items: baseline; }
-  .row:first-child { padding-top: 0; }
-  .row dt { font-size: 14px; font-weight: 700; color: var(--sea); line-height: 1.7; }
-  .row dd { margin: 0; overflow-wrap: anywhere; }
-  .acct { font-weight: 700; letter-spacing: .02em; font-variant-numeric: tabular-nums; color: var(--sea-deep); }
+  .row { display: block; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .row:first-child { padding-top: 2px; }
+  .row dt { font-size: 14px; font-weight: 700; color: var(--sea); line-height: 1.6; margin-bottom: 2px; }
+  .row dd { margin: 0; overflow-wrap: anywhere; line-height: 1.8; }
+  .acct { font-size: 22px; font-weight: 700; letter-spacing: .02em; font-variant-numeric: tabular-nums; color: var(--sea-deep); line-height: 1.5; }
+  .nw { white-space: nowrap; }
+  .way { display: flex; flex-direction: column; background: #FFFDF9; border: 1.5px solid var(--line); border-radius: 18px; padding: 20px 22px 22px; }
+  .way h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; margin: 0 0 14px; padding-bottom: 12px; border-bottom: 2px solid var(--sun-soft); color: var(--sea-deep); }
+  .num { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--sea-deep); color: #fff; font-family: var(--body); font-size: 16px; font-weight: 700; flex: none; }
+  .way .designate { margin-top: auto; align-self: flex-start; }
+  .either-h { display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--sea-deep); font-size: 15px; }
+  .either-h em { font-style: normal; font-size: 12px; background: var(--sun-soft); border-radius: 999px; padding: 0 10px; line-height: 1.9; }
   .either { margin: 6px 0 18px; border: 1.5px dashed var(--sun); border-radius: 16px; padding: 14px; background: #FFFAF1; display: grid; gap: 10px; }
   .opt { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; }
   .opt p { margin: 0; line-height: 1.8; overflow-wrap: anywhere; }
@@ -231,7 +238,8 @@
     .card-art { width: 120px; justify-self: start; order: -1; }
     .give { padding: 22px 20px 20px; }
     .ways { grid-template-columns: 1fr; gap: 20px; }
-    .row { grid-template-columns: 1fr; }
+    .way { padding: 18px 16px 18px; }
+    .acct { font-size: 20px; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
@@ -305,21 +313,22 @@
       <h2 id="giving">奉獻方式</h2>
       <p class="receipt">捐款港幣 100 元或以上可獲香港免稅收據。</p>
       <div class="ways">
-        <div>
-          <h3>1. 劃線支票</h3>
+        <div class="way">
+          <h3><span class="num">1</span>劃線支票</h3>
           <dl class="rows">
-            <div class="row"><dt>抬頭</dt><dd>「優瓦薈有限公司」或「YOU WA HUI LIMITED」</dd></div>
+            <div class="row"><dt>抬頭</dt><dd>「優瓦薈有限公司」或「<span class="nw">YOU WA HUI LIMITED</span>」</dd></div>
             <div class="row"><dt>郵寄地址</dt><dd>香港新界上水石湖墟郵局郵政信箱266號優瓦薈會計部收</dd></div>
           </dl>
           <span class="designate">註明奉獻給：美麗之島（Joyce）</span>
         </div>
-        <div>
-          <h3>2. 銀行過數或存款</h3>
+        <div class="way">
+          <h3><span class="num">2</span>銀行過數或存款</h3>
           <dl class="rows">
             <div class="row"><dt>中信(國際)銀行戶口</dt><dd class="acct">018-716-2-08038-3-00</dd></div>
             <div class="row"><dt>戶口名稱</dt><dd>YOU WA HUI LIMITED</dd></div>
           </dl>
           <div class="either" role="group" aria-label="入數紙寄回方式，二擇一">
+            <div class="either-h"><span>入數紙</span><em>二擇一</em></div>
             <div class="opt">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
               <p>把入數紙電郵至 <a href="mailto:youwahui@gmail.com">youwahui@gmail.com</a></p>
